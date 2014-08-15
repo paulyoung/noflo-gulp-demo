@@ -1,0 +1,40 @@
+{
+  "properties": {
+    "name": "Watch task."
+  },
+  "processes": {
+    "Create": {
+      "component": "CreateTask"
+    },
+    "Watch": {
+      "component": "WatchFiles"
+    }
+  },
+  "connections": [
+    {
+      "data": "graphs/tasks/Compile.json",
+      "tgt": {
+        "process": "Create",
+        "port": "graph"
+      }
+    },
+    {
+      "data": "src/**/*.coffee",
+      "tgt": {
+        "process": "Watch",
+        "port": "glob"
+      }
+    },
+    {
+      "src": {
+        "process": "Create",
+        "port": "name"
+      },
+      "tgt": {
+        "process": "Watch",
+        "port": "tasks",
+        "index": 0
+      }
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 {
   "scripts": {
     "compile": "node_modules/.bin/noflo graphs/tasks/Compile.json",
-    "test": "node_modules/.bin/noflo graphs/tasks/Test.json"
+    "test": "node_modules/.bin/noflo graphs/tasks/Test.json",
+    "watch": "node_modules/.bin/noflo graphs/tasks/Watch.json"
   },
   "devDependencies": {
     "chai": "~1.9.1",
