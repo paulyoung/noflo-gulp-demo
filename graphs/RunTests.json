@@ -1,0 +1,50 @@
+{
+  "properties": {
+    "name": "Run tests."
+  },
+  "processes": {
+    "Source": {
+      "component": "CreateSource"
+    },
+    "Mocha": {
+      "component": "RunMocha"
+    }
+  },
+  "connections": [
+    {
+      "data": {
+        "read": false
+      },
+      "tgt": {
+        "process": "Source",
+        "port": "options"
+      }
+    },
+    {
+      "data": "spec/**/*.coffee",
+      "tgt": {
+        "process": "Source",
+        "port": "glob"
+      }
+    },
+    {
+      "data": {
+        "reporter": "spec"
+      },
+      "tgt": {
+        "process": "Mocha",
+        "port": "options"
+      }
+    },
+    {
+      "src": {
+        "process": "Source",
+        "port": "stream"
+      },
+      "tgt": {
+        "process": "Mocha",
+        "port": "stream"
+      }
+    }
+  ]
+}

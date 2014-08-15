@@ -1,0 +1,32 @@
+{
+  "properties": {
+    "name": "Test task."
+  },
+  "processes": {
+    "Create": {
+      "component": "CreateTask"
+    },
+    "Run": {
+      "component": "RunTask"
+    }
+  },
+  "connections": [
+    {
+      "data": "graphs/RunTests.json",
+      "tgt": {
+        "process": "Create",
+        "port": "graph"
+      }
+    },
+    {
+      "src": {
+        "process": "Create",
+        "port": "name"
+      },
+      "tgt": {
+        "process": "Run",
+        "port": "name"
+      }
+    }
+  ]
+}
