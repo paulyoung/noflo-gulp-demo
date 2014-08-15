@@ -1,0 +1,53 @@
+{
+  "properties": {
+    "name": "Compile task."
+  },
+  "processes": {
+    "CreateCompileTask": {
+      "component": "CreateTask"
+    },
+    "CreateTestTask": {
+      "component": "CreateTask"
+    },
+    "RunCompileTask": {
+      "component": "RunTask"
+    }
+  },
+  "connections": [
+    {
+      "data": "graphs/tasks/Test.json",
+      "tgt": {
+        "process": "CreateTestTask",
+        "port": "graph"
+      }
+    },
+    {
+      "src": {
+        "process": "CreateTestTask",
+        "port": "name"
+      },
+      "tgt": {
+        "process": "CreateCompileTask",
+        "port": "dependencies",
+        "index": "0"
+      }
+    },
+    {
+      "data": "graphs/CompileCoffeeScript.json",
+      "tgt": {
+        "process": "CreateCompileTask",
+        "port": "graph"
+      }
+    },
+    {
+      "src": {
+        "process": "CreateCompileTask",
+        "port": "name"
+      },
+      "tgt": {
+        "process": "RunCompileTask",
+        "port": "name"
+      }
+    }
+  ]
+}

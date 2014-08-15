@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "compile": "node_modules/.bin/noflo graphs/tasks/Compile.json",
     "test": "node_modules/.bin/noflo graphs/tasks/Test.json"
   },
   "devDependencies": {

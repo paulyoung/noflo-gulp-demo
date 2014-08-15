@@ -1,0 +1,65 @@
+{
+  "properties": {
+    "name": "Compile CoffeeScript."
+  },
+  "processes": {
+    "Source": {
+      "component": "CreateSource"
+    },
+    "Coffee": {
+      "component": "CompileCoffeeScript"
+    },
+    "Error": {
+      "component": "ThrowPluginError"
+    },
+    "Destination": {
+      "component": "WriteToDestination"
+    }
+  },
+  "connections": [
+    {
+      "src": {
+        "process": "Coffee",
+        "port": "error"
+      },
+      "tgt": {
+        "process": "Error",
+        "port": "options"
+      }
+    },
+    {
+      "data": "src/**/*.coffee",
+      "tgt": {
+        "process": "Source",
+        "port": "glob"
+      }
+    },
+    {
+      "src": {
+        "process": "Source",
+        "port": "stream"
+      },
+      "tgt": {
+        "process": "Coffee",
+        "port": "stream"
+      }
+    },
+    {
+      "data": "lib",
+      "tgt": {
+        "process": "Destination",
+        "port": "path"
+      }
+    },
+    {
+      "src": {
+        "process": "Coffee",
+        "port": "stream"
+      },
+      "tgt": {
+        "process": "Destination",
+        "port": "stream"
+      }
+    }
+  ]
+}
