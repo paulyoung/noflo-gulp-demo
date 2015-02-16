@@ -7,7 +7,7 @@
   "devDependencies": {
     "chai": "~1.9.1",
     "noflo": "~0.5.9",
-    "noflo-gulp": "~0.1.0",
+    "noflo-gulp": "~0.2.0",
     "noflo-gulp-coffee": "~0.1.0",
     "noflo-gulp-mocha": "~0.1.0",
     "noflo-gulp-util": "~0.1.0"
